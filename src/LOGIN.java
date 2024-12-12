@@ -18,7 +18,7 @@ public class LOGIN extends JFrame{
         setTitle("Pantalla de Login");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null); // Sin layout para posiciones personalizadas
+        setLayout(null);
 
         // Crear componentes
         JLabel usuarioLabel = new JLabel("Usuario:");
@@ -28,7 +28,6 @@ public class LOGIN extends JFrame{
         JButton validar = new JButton("Ingresar");
         mensaje = new JLabel("", SwingConstants.CENTER);
 
-        // Establecer posiciones y tamaños
         usuarioLabel.setBounds(50, 50, 100, 30);
         usuarioField.setBounds(150, 50, 180, 30);
         passwordLabel.setBounds(50, 100, 100, 30);
@@ -36,7 +35,6 @@ public class LOGIN extends JFrame{
         validar.setBounds(150, 150, 100, 30);
         mensaje.setBounds(50, 200, 300, 30);
 
-        // Cambiar colores
         usuarioLabel.setForeground(Color.BLUE);
         passwordLabel.setForeground(Color.BLUE);
         usuarioField.setBackground(Color.CYAN);
@@ -45,7 +43,6 @@ public class LOGIN extends JFrame{
         validar.setForeground(Color.WHITE);
         mensaje.setForeground(Color.RED);
 
-        // Agregar funcionalidad al botón
         validar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
