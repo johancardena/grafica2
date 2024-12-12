@@ -1,75 +1,64 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class LOGIN extends JFrame{
 
     private JTextField usuarioField;
-    private JPanel panel1;
     private JPasswordField passwordField;
     private JButton ingresar;
     private JLabel Usuario;
     private JLabel Contraseña;
+    private JPanel panel1;
     private JLabel mensaje;
 
     public LOGIN() {
-
-        setTitle("Pantalla de Login");
-        setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-
-        // Crear componentes
-        JLabel usuarioLabel = new JLabel("Usuario:");
-        usuarioField = new JTextField();
-        JLabel passwordLabel = new JLabel("Contraseña:");
-        passwordField = new JPasswordField();
-        JButton validar = new JButton("Ingresar");
-        mensaje = new JLabel("", SwingConstants.CENTER);
-
-        usuarioLabel.setBounds(50, 50, 100, 30);
-        usuarioField.setBounds(150, 50, 180, 30);
-        passwordLabel.setBounds(50, 100, 100, 30);
-        passwordField.setBounds(150, 100, 180, 30);
-        validar.setBounds(150, 150, 100, 30);
-        mensaje.setBounds(50, 200, 300, 30);
-
-        usuarioLabel.setForeground(Color.BLUE);
-        passwordLabel.setForeground(Color.BLUE);
-        usuarioField.setBackground(Color.CYAN);
-        passwordField.setBackground(Color.LIGHT_GRAY);
-        validar.setBackground(Color.GREEN);
-        validar.setForeground(Color.WHITE);
-        mensaje.setForeground(Color.RED);
-
-        validar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String usuario = usuarioField.getText();
-                String password = new String(passwordField.getPassword());
-
-                if (usuario.equals("APELLIDO") && password.equals("APELLIDO123")) {
-                    mensaje.setText("Acceso correcto");
-                    mensaje.setForeground(Color.GREEN);
-                } else {
-                    mensaje.setText("Usuario o contraseña incorrectos");
-                    mensaje.setForeground(Color.RED);
+            ingresar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    validarCredenciales();
                 }
+            });
+            setVisible(true);}
+
+        private void validarCredenciales() {
+            String usuario = usuarioField.getText().trim();
+            String contraseña = new String(passwordField.getPassword()).trim();
+
+            if (usuario.isEmpty() || contraseña.isEmpty()) {
+                mensaje.setText("Por favor, complete todos los campos.");
+                mensaje.setForeground(Color.RED);
+            } else if (usuario.equals("admin") && contraseña.equals("1234")) {
+                mensaje.setText("Inicio de sesión exitoso.");
+                mensaje.setForeground(Color.GREEN);
+
+            } else {
+                mensaje.setText("Usuario o contraseña incorrectos.");
+                mensaje.setForeground(Color.RED);
             }
-        });
+        }
 
-        add(usuarioLabel);
-        add(usuarioField);
-        add(passwordLabel);
-        add(passwordField);
-        add(validar);
-        add(mensaje);
-
-        setVisible(true);
+        public static void main(String[] args) {
+            JFrame frame=new JFrame("BIENVENIDO");
+            frame.setContentPane(new LOGIN().panel1);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(800,600);
+            frame.setPreferredSize(new Dimension(800,600));
+            frame.pack();
+            frame.setVisible(true);
+        }
     }
 
 
-}
+
+
+
+
+
+
+
+
+
+
 
 
